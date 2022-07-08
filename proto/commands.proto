@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package server;
+
+import "google/protobuf/empty.proto";
+
+message Command {
+    int32 id = 1;
+    string name = 2;
+    string params = 3;
+}
+
+message CommandResponse {
+    int32 id = 1;
+    string name = 2;
+    string log = 3;
+    int32 exitCode = 4;
+}
+
+service Commands {
+    rpc Exec(Command) returns (CommandResponse) {};
+}
